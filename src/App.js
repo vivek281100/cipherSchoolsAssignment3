@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import { Redirect, } from 'react-router';
+import Login from './component/Login/Login';
+import Register from './component/Register/Register';
+//import Login from './component/Login/Login';
+//import Register from './component/Register/Register';
 
 function App() {
+  const [auth,setAuth] = useState(false);
+  if(auth){
+    return <Redirect to='/foodrecipeeDashboard' />
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login/>
+      <Register/>
+      <button type='text' onClick={() => setAuth(true)}>Log-in</button>
     </div>
   );
 }
